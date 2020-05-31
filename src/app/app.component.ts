@@ -13,16 +13,17 @@ export class AppComponent implements OnInit {
 
   @Input() arraySize: number;
 
-  ngOnInit(): void {
-    this.numberArray = this.initializeNumberArray(10);
+  ngOnInit(size: number = 10): void {
+    this.numberArray = [];
+    this.steps = [];
+    this.stylingArray = [];
+    this.numberArray = this.initializeNumberArray(size);
     this.shuffleArray(this.numberArray);
     this.steps.push([...this.numberArray]);
   }
 
   onArraySizeChange(event) {
-    this.numberArray = this.initializeNumberArray(event.target.value);
-    this.shuffleArray(this.numberArray);
-    this.steps.push([...this.numberArray]);
+    this.ngOnInit(event.target.value);
   }
 
   shuffleArray (arrayToShuffle: any[])  {
