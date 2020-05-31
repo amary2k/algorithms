@@ -1,0 +1,27 @@
+.number-bg {
+    background-color: antiquewhite;
+    border-radius: 50%;
+    min-width: 20px;
+    text-align: center;
+    margin: 5px;
+    align-self: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+.lengthArrayInput {
+    border: thick;
+    border-color: aliceblue;
+}
+#button {
+    border: thick;
+    border-color: aliceblue;
+}

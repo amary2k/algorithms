@@ -1,0 +1,14 @@
+<h2>Numbers to sort: </h2>
+<input class="lengthArrayInput" (change)="onArraySizeChange($event)" type="number" maxlength="1">
+<button (click)="onSort($event)">SORT</button>  
+<table *ngFor="let step of steps; let i=index">
+  <tr><td>
+      <h3>Step {{ i }}</h3></td>
+      <td>
+      <div class="container">
+      <div class="number-bg" *ngFor="let no of step; let j=index">
+        <span *ngIf="stylingArray[i] && stylingArray[i].includes(j); else elseBlock" style="background-color:aqua;">{{ no }}</span>
+        <ng-template #elseBlock>{{ no }}</ng-template>
+      </div>
+    </div></td></tr>
+</table>
