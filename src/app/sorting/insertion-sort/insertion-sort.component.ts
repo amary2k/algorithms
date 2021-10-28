@@ -5,19 +5,19 @@ import { NumberArrayGuiComponent } from '../number-array-gui/number-array-gui.co
 import { ArrayUtilService } from '../util/array-util.service';
 
 @Component({
-  selector: 'app-bubble-sort',
+  selector: 'app-insertion-sort',
   templateUrl: '../number-array-gui/number-array-gui.component.html',
   styleUrls: ['../number-array-gui/number-array-gui.component.scss'],
   animations: NumberArrayGuiComponent.animations,
 })
-export class BubbleSortComponent extends NumberArrayGuiComponent implements Sorting {
+export class InsertionSortComponent extends NumberArrayGuiComponent implements Sorting {
 
   constructor() {
-    super('Bubble Sort', 10);
+    super('Insertion Sort', 10);
   }
 
   // Main logic
-  sortArray(arrayToSort: number[]) { // Bubble Sort
+  sortArray(arrayToSort: number[]) { // Insertion Sort
     let sorted =  false;
     while(!sorted) { // As long as not sorted keep on looping final iteration will be sorted
       sorted = true;

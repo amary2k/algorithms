@@ -1,24 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
- 
- 
 
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MortgageCalcComponent } from './mortgage-calc/mortgage-calc.component';
 import { appRoutingModule } from './app.routing';
-import { BubbleSortModule } from './sorting/bubble-sort/bubble-sort.module';
+import { SortingModule } from './sorting/sorting.module';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { MortgageModule } from './mortgage-calc/mortgage-calc.module';
+import { NodeComponent } from './data-structures/node/node.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TreeModule } from './data-structures/tree/tree.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MortgageCalcComponent,
+    WelcomeComponent,
+    NodeComponent,
   ],
   imports: [
     BrowserModule,
     NoopAnimationsModule,
-    BubbleSortModule,
-    appRoutingModule
+    appRoutingModule,
+    SortingModule,
+    MortgageModule,
+    TreeModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

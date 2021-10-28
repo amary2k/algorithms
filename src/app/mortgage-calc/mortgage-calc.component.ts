@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-mortgage-calc',
   templateUrl: './mortgage-calc.component.html',
-  styleUrls: ['./mortgage-calc.component.sass']
+  styleUrls: ['./mortgage-calc.component.scss']
 })
 export class MortgageCalcComponent implements OnInit {
 
@@ -17,21 +16,29 @@ export class MortgageCalcComponent implements OnInit {
   interestToThePowerOfMonthsLessOne = 0;
   dividedMonthlyInterest = 0;
   monthlyPayment = 0;
+  noOfMonthsTerm = 0;
+  interestCost = 0;
 
   constructor() {
     this.principalAmt = 240000;
     this.interestRate =  3.15;
+    this.noOfTermYears = 20;
+    this.onPrincipalAmtChange();
+   }
+
+  ngOnInit() {
+  }
+
+  onPrincipalAmtChange() {
     this.monthlyInterestRate = (this.interestRate/100)/12;
     this.monthlyInterestRateIncrement = this.monthlyInterestRate + 1;
-    this.noOfTermYears = 20;
     this.noOfMonthlyPayments =  this.noOfTermYears * 12;
     this.interestToThePowerOfMonths = Math.pow(this.monthlyInterestRateIncrement, -(this.noOfMonthlyPayments))
     this.interestToThePowerOfMonthsLessOne = 1 - this.interestToThePowerOfMonths;
     this.dividedMonthlyInterest = this.monthlyInterestRate / this.interestToThePowerOfMonthsLessOne;
     this.monthlyPayment =  this.dividedMonthlyInterest * this.principalAmt;
-   }
-
-  ngOnInit() {
+    this.noOfMonthsTerm = 12 * this.noOfTermYears;
+    this.interestCost = (this.noOfMonthsTerm * this.monthlyPayment) - this.principalAmt;
   }
 
 }

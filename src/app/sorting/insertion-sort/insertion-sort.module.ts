@@ -1,16 +1,17 @@
-import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BubbleSortComponent } from './bubble-sort.component';
+import { InsertionSortComponent } from './insertion-sort.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+
 @NgModule({
-  declarations: [BubbleSortComponent],
+  declarations: [InsertionSortComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    MatProgressBarModule,
+    MatProgressBarModule
   ],
-  exports: [BubbleSortComponent],
+  exports: [InsertionSortComponent],
 })
-export class BubbleSortModule { }
+export class InsertionSortModule { }

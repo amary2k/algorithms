@@ -1,16 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div style="text-align:left">
+  <h2>{{ title }}</h2>
 </div>
-<h2>Numbers to sort: </h2>
-<input class="lengthArrayInput" (change)="onArraySizeChange($event)" type="number" maxlength="1" [value]="initialSize">
+<label class="form-label mt-4">Numbers to sort:</label>
+<div class="form-group">
+  <div class="input-group mb-3">
+    <input type="number" (change)="onArraySizeChange($event)" [value]="initialSize" class="form-control" aria-label="">
+  </div>
+</div>
 <button (click)="onSort($event)">SORT</button>  
-<p>Steps:{{steps}}</p>
+<p>Steps:{{ steps }}</p>
+<mat-progress-bar *ngIf="sortPromise | async" mode="indeterminate"></mat-progress-bar>
 <table [@fadeIn]="'in'" *ngFor="let step of steps; let i=index">
   <tr><td>
-      <h3>Step {{ i }}</h3></td>
+      <h3>Step {{ i+1 }}</h3></td>
       <td>
       <div class="container">
       <div class="number-bg" *ngFor="let no of step; let j=index">

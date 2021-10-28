@@ -6,5 +6,5 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+
 }
