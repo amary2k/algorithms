@@ -12,84 +12,71 @@ import { NumberArrayGuiComponent } from '../number-array-gui/number-array-gui.co
 export class MergeSortComponent extends NumberArrayGuiComponent implements Sorting {
 
   constructor() {
-    super('Merge Sort', 10);
+    super('Merge Sort', 10, 'n log n');
   }
 
   // Main logic
   sortArray(arrayToSort: number[]) { // Merge Sort
     // Divide, Conquer and Combine
-    
-    this.mergeSort(arrayToSort, 0 ,arrayToSort.length-1);
+    this.steps = [];
+    this.mergeSort(arrayToSort, 0, arrayToSort.length - 1);
     this.steps.push([...arrayToSort]);
+
+    return new Promise<boolean>((resolve, reject) => { resolve(true) });
   }
 
-  mergeSort(arrayToSort:number[], startIndex:number, endIndex:number){
+  mergeSort(arrayToSort: number[], startIndex: number, endIndex: number) {
     // Step 1 Divide array to two problems if not solvable
-    if(startIndex < endIndex) { // if array has less than one element return array else proceed
-    let midIndex = Math.ceil((startIndex + endIndex)/2); // 3/2 = 2
-    this.mergeSort(arrayToSort, startIndex, midIndex);
-    this.mergeSort(arrayToSort, midIndex+1, endIndex);
-    this.merge(arrayToSort, startIndex, midIndex, endIndex);
+    if (startIndex < endIndex) { // if array has less than one element return array else proceed
+      let midIndex = Math.floor((startIndex + endIndex) / 2); // 3/2 = 2
+      this.mergeSort(arrayToSort, startIndex, midIndex);
+      this.mergeSort(arrayToSort, midIndex + 1, endIndex);
+      this.merge(arrayToSort, startIndex, midIndex, endIndex);
     }
   }
-
-  // mergeArray(array1, array2) {
-  //   let newArray = [];
-  //   for(let i=0; i<array1.length; i++){
-
-  //   }
-  // }
-  merge(arrayToSort, startIndex:number, midIndex:number, endIndex:number){
+  merge(arrayToSort, startIndex: number, midIndex: number, endIndex: number) {
 
     let leftArray = [];
     let rightArray = [];
 
     /*Copy data to temp arrays*/
     for (let i = 0; i <= (midIndex - startIndex); ++i) {
-      leftArray.push(arrayToSort[startIndex + i]); 
+      leftArray.push(arrayToSort[startIndex + i]);
     }
-    for (let j = 0; j <= (endIndex-midIndex); ++j) {
-      rightArray.push(arrayToSort[midIndex + 1 + j]); 
+    for (let j = 0; j < (endIndex - midIndex); ++j) {
+      rightArray.push(arrayToSort[midIndex + 1 + j]);
     }
 
     // Initial indexes of first and second subarrays 
-    let i = 0, j = 0; 
-  
+    let i = 0, j = 0;
+
     // Initial index of merged subarry array 
-    let k = startIndex; 
-    while (i < leftArray.length && j < rightArray.length) { 
-        if (leftArray[i] <= rightArray[j]) { 
-          arrayToSort[k] = leftArray[i]; 
-            i++; 
-        } 
-        else { 
-          arrayToSort[k] = rightArray[j]; 
-            j++; 
-        } 
-        k++; 
-    } 
+    let k = startIndex;
+    while (i < leftArray.length && j < rightArray.length) {
+      if (leftArray[i] <= rightArray[j]) {
+        arrayToSort[k] = leftArray[i];
+        i++;
+      }
+      else {
+        arrayToSort[k] = rightArray[j];
+        j++;
+      }
+      k++;
+    }
 
     /* Copy remaining elements of L[] if any */
-    while (i < leftArray.length) { 
-        arrayToSort[k] = leftArray[i]; 
-        i++; 
-        k++; 
-    } 
+    while (i < leftArray.length) {
+      arrayToSort[k] = leftArray[i];
+      i++;
+      k++;
+    }
 
     /* Copy remaining elements of R[] if any */
-    while (j < rightArray.length) { 
-        arrayToSort[k] = rightArray[j]; 
-        j++; 
-        k++; 
-    } 
-
-  }
-
-  divideArray(startIndex, endIndex, arrayToDivide){
-    let newArray = [];
-    for(let i=startIndex; i<endIndex; i++){
-      newArray.push(arrayToDivide[i]);
+    while (j < rightArray.length) {
+      arrayToSort[k] = rightArray[j];
+      j++;
+      k++;
     }
-    return newArray;
+
   }
 }

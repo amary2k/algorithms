@@ -1,0 +1,35 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" (scroll)="onTableScroll($event)">
+    
+    <ng-container matColumnDef="index">
+      <mat-header-cell *matHeaderCellDef class="w-75"> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="w-75"> {{ element.index }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="step">
+      <mat-header-cell *matHeaderCellDef> Array </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="number-bg" *ngFor="let no of element.step; let j = index" [ngClass]="{'number-bg-diff': element.stylingArray && element.stylingArray.includes(j)}">{{no}}
+          <!-- <span *ngIf="element.stylingArray && element.stylingArray.includes(j); else elseBlock" class="number-bg-diff">{{ no }}</span> -->
+          <!-- <ng-template #elseBlock>{{ no }}</ng-template> -->
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <!-- <ng-container matColumnDef="array">
+      <mat-header-cell *matHeaderCellDef> Array </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+        <div class="number-bg" *ngFor="let no of step; let j=index">
+          <span *ngIf="stylingArray[i] && stylingArray[i].includes(j); else elseBlock" style="background-color:aqua;">{{ no }}</span>
+          <ng-template #elseBlock>{{ no }}</ng-template>
+        </div>
+       </mat-cell>
+    </ng-container> -->
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns; let i= index" (click)="selectedRow(row)"
+    [ngClass]="{'highlightTableColor': selectedRowIndex == i}"></mat-row>
+  </mat-table>
+</div>
+

@@ -13,7 +13,7 @@ import { ArrayUtilService } from '../util/array-util.service';
 export class InsertionSortComponent extends NumberArrayGuiComponent implements Sorting {
 
   constructor() {
-    super('Insertion Sort', 10);
+    super('Insertion Sort', 10, 'n^2');
   }
 
   // Main logic
@@ -28,5 +28,6 @@ export class InsertionSortComponent extends NumberArrayGuiComponent implements S
         }
       }
     }
+    return new Promise<boolean>((resolve, reject) => { resolve(true)});
   }
 }

@@ -1,0 +1,33 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+}
+
+.mat-table {
+  overflow-x: scroll;
+  max-height: 500px;
+  max-width: 800px;
+}
+
+.number-bg {
+  background-color: antiquewhite;
+  border-radius: 50%;
+  min-width: 20px;
+  text-align: center;
+  margin: 5px;
+  align-self: center;
+}
+
+mat-cell {
+  overflow: visible;
+}
+
+.number-bg-diff {
+  @extend .number-bg;
+  background-color: aqua;
+}
+
+.w-75{
+  max-width: 75px;
+}

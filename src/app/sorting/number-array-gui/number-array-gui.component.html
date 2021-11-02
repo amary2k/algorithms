@@ -2,28 +2,43 @@
 <div style="text-align:left">
   <h2>{{ title }}</h2>
 </div>
+<p><b>Big O worst case:</b> O({{bigOWorstCase }})
+  <span><b>Time to sort:</b> {{ timeToSort }}ms </span>
+  <span><b>Total swaps:</b> {{ steps.length }}</span>
+</p>
 <label class="form-label mt-4">Numbers to sort:</label>
-<div class="form-group">
-  <div class="input-group mb-3">
-    <input type="number" (change)="onArraySizeChange($event)" [value]="initialSize" class="form-control" aria-label="">
+
+  <div class="input-group mb-2">
+    <input type="number" (change)="onArraySizeChange($event)" [value]="initialSize" class="form-control" aria-label="" min="1" max="99">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="onSort($event)">Sort</button>
+    </div>
   </div>
-</div>
-<button (click)="onSort($event)">SORT</button>  
-<p>Steps:{{ steps }}</p>
+
+<p><b>Problem:</b> {{ problem }}</p>
+
+
+
+
+
+<!-- <p>Steps:{{ steps }}</p> -->
 <mat-progress-bar *ngIf="sortPromise | async" mode="indeterminate"></mat-progress-bar>
-<table [@fadeIn]="'in'" *ngFor="let step of steps; let i=index">
+<app-table [steps]="sortedSteps" [stylingArray]="finalStylingArray"></app-table>
+<!-- <app-table [dataSource]="steps"></app-table> -->
+
+<!-- <table [@fadeIn]="'in'" *ngFor="let step of steps; let i=index">
   <tr><td>
       <h3>Step {{ i+1 }}</h3></td>
       <td>
       <div class="container">
       <div class="number-bg" *ngFor="let no of step; let j=index">
-        <span *ngIf="stylingArray[i] && stylingArray[i].includes(j); else elseBlock" style="background-color:aqua;">
+        <span *ngIf="stylingArray[i] && stylingArray[i].includes(j); else elseBlock" style="background-color:aqua;"> -->
           <!-- <svg height="10" width="10">
             <polygon points="250,60 100,400 400,400" class="triangle" />
               Sorry, your browser does not support inline SVG.
           </svg> -->
-          {{ no }}</span>
+          <!-- {{ no }}</span>
         <ng-template #elseBlock>{{ no }}</ng-template>
       </div>
     </div></td></tr>
-</table>
+</table> -->

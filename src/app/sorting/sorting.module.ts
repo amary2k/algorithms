@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { BubbleSortComponent } from './bubble-sort/bubble-sort.component';
 import { MergeSortComponent } from './merge-sort/merge-sort.component';
 import { InsertionSortComponent } from './insertion-sort/insertion-sort.component';
+import { SelectionSortModule } from './selection-sort/selection-sort.module';
+import { SelectionSortComponent } from './selection-sort/selection-sort.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,11 @@ import { InsertionSortComponent } from './insertion-sort/insertion-sort.componen
     CommonModule,
     BubbleSortModule,
     MergeSortModule,
-    InsertionSortModule,
+    SelectionSortModule,
     RouterModule.forChild([
       { path: 'bubble-sort', component: BubbleSortComponent },
       { path: 'merge-sort', component: MergeSortComponent },
-      { path: 'insertion-sort', component: InsertionSortComponent },
+      { path: 'selection-sort', component: SelectionSortComponent },
     ]),
   ]
 })

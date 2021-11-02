@@ -5,25 +5,26 @@ import { NumberArrayGuiComponent } from '../number-array-gui/number-array-gui.co
 import { ArrayUtilService } from '../util/array-util.service';
 
 @Component({
-  selector: 'app-bubble-sort',
+  selector: 'app-selection-sort',
   templateUrl: '../number-array-gui/number-array-gui.component.html',
   styleUrls: ['../number-array-gui/number-array-gui.component.scss'],
   animations: NumberArrayGuiComponent.animations,
 })
-export class BubbleSortComponent extends NumberArrayGuiComponent implements Sorting {
+export class SelectionSortComponent extends NumberArrayGuiComponent implements Sorting {
 
   constructor() {
-    super('Bubble Sort', 10, 'n^2');
+    super('Selection Sort', 10, 'n^2');
   }
 
   // Main logic
-  sortArray(arrayToSort: number[]) { // Bubble Sort
+  sortArray(arrayToSort: number[]) { // selection Sort
     let sorted =  false;
-    while(!sorted) { // As long as not sorted keep on looping final iteration will be sorted
+    // As long as not sorted and more sub arrays coninue sorting
+    for (let j = 0; j < arrayToSort.length-1 && !sorted; j++) { 
       sorted = true;
-      for (let i = 0; i < arrayToSort.length; i++) {
-        if (arrayToSort[i] > arrayToSort[i + 1]) { // If greater then swap
-          this.swapArrayValues(arrayToSort, i, i + 1);
+      for (let i = j+1; i < arrayToSort.length; i++) {
+        if (arrayToSort[i] < arrayToSort[j]) { // If greater then swap
+          this.swapArrayValues(arrayToSort, i, j);
           sorted = false;
         }
       }
