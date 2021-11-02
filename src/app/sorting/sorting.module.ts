@@ -22,10 +22,12 @@ import { SelectionSortComponent } from './selection-sort/selection-sort.componen
     BubbleSortModule,
     MergeSortModule,
     SelectionSortModule,
+    InsertionSortModule,
     RouterModule.forChild([
       { path: 'bubble-sort', component: BubbleSortComponent },
       { path: 'merge-sort', component: MergeSortComponent },
       { path: 'selection-sort', component: SelectionSortComponent },
+      { path: 'insertion-sort', component: InsertionSortComponent },
     ]),
   ]
 })

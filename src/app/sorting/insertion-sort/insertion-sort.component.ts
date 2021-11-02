@@ -18,14 +18,11 @@ export class InsertionSortComponent extends NumberArrayGuiComponent implements S
 
   // Main logic
   sortArray(arrayToSort: number[]) { // Insertion Sort
-    let sorted =  false;
-    while(!sorted) { // As long as not sorted keep on looping final iteration will be sorted
-      sorted = true;
-      for (let i = 0; i < arrayToSort.length; i++) {
-        if (arrayToSort[i] > arrayToSort[i + 1]) { // If greater then swap
-          this.swapArrayValues(arrayToSort, i, i + 1);
-          sorted = false;
-        }
+    for(let i=1; i < arrayToSort.length; i++) {
+      let j = i;
+      while(j > 0 && arrayToSort[j-1] > arrayToSort[j]) {
+        this.swapArrayValues(arrayToSort, j, j-1);
+        j--;
       }
     }
     return new Promise<boolean>((resolve, reject) => { resolve(true)});
